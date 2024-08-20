@@ -97,7 +97,7 @@ def save_cleaned_data(df, output_file_path):
 # Main workflow
 def main():
     # File paths
-    input_file_path = 'books_with_ratings_and_links_all_pages.csv'
+    input_file_path = 'books_with_detailed_info.csv'
     output_file_path = 'cleaned_books_data.csv'
     
     # Load the data

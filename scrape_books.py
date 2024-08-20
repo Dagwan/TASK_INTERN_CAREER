@@ -110,7 +110,7 @@ def scrape_books(base_url, pages):
                 product_info = extract_product_info(book_url)
                 # Combine the book's main info with its detailed product info
                 book_data = {
-                    'Title': title,
+                    'Book Title': title,
                     'Price': price,
                     'Availability': availability,
                     'Rating': rating,
