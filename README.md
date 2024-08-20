@@ -6,6 +6,8 @@ The **Book Scraper Script** is a Python application designed to scrape book info
 
 This project is a web scraper built to extract comprehensive details about books listed on a website. It scrapes data from multiple pages of books and retrieves additional product information by visiting each book's individual page.
 
+[Software Demo Video](https://youtu.be/xGGPXlK9Lvs)
+
 ### Key Features:
 
 - **Scrape Multiple Pages:** Automatically navigate through multiple pages of books to collect data.
@@ -48,23 +50,22 @@ pip install requests beautifulsoup4 pandas
 
 ## How to Run the Script
 ### Running the Script Locally
-- Clone the Repository:
-Clone the project repository from GitHub to your local machine.
+- Clone the project repository from GitHub to your local machine.
 
-git clone <repository-url>
-cd <repository-directory>
+* git clone "repository-url"
+* cd "repository-directory"
 
 ## Install Dependencies:
 Ensure all required libraries are installed using the command:
 pip install -r requirements.txt
 
 ## Run the Script:
-Execute the script by running:
+Execute the scripts by running one by one:
 - python book_scraper.py
 - python process_books.py
 
 ## Check the Output:
-The script will create a CSV file named books_with_detailed_info.csv containing all the scraped data.
+The script will create a CSV file named books_with_detailed_info.csv containing all the scraped data. 
 
 ## Script Workflow
 - Fetching Pages:
