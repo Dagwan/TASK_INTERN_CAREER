@@ -50,5 +50,5 @@ df = pd.DataFrame(book_data, columns=['Title', 'Price', 'Availability', 'Rating'
 print(df)
 
 # Save the data to a CSV file
-df.to_csv('books.csv', index=False)
+df.to_csv('books_with_ratings_and_links_all_pages.csv', index=False)
 print("Data saved to books_with_ratings_and_links_all_pages.csv")
