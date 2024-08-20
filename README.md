@@ -43,69 +43,55 @@ The Book Scraper Script was developed using the following tools:
 
 To install the necessary dependencies, run the following command:
 
-```bash
+## bash
 pip install requests beautifulsoup4 pandas
 
+## How to Run the Script
+### Running the Script Locally
+- Clone the Repository:
+Clone the project repository from GitHub to your local machine.
 
-## Features
+git clone <repository-url>
+cd <repository-directory>
 
-- **Contact Page:** Manage contact information with the ability to create, retrieve, update, and delete entries.
-- **Student Application Forms:** Handle student applications by providing endpoints for creating new applications, retrieving existing ones, updating details, and deleting applications.
-- **Account Management:** Supports user account functionalities including account creation, login, password recovery, and password reset.
+## Install Dependencies:
+Ensure all required libraries are installed using the command:
+pip install -r requirements.txt
 
----------------------------------------------------------------------------------------------------------------------------------
+## Run the Script:
+Execute the script by running:
+- python book_scraper.py
+- python process_books.py
 
-- **Create Entries:** Users can add new entries to the database by providing relevant details in JSON format.
-- **Retrieve Entries:** The API allows users to fetch a list of all entries or retrieve a specific entry by its unique ID.
-- **Update Entries:** Users can easily update information using the PUT endpoint. They can send the updated details in JSON format to modify existing entries.
-- **Delete Entries:** Entries can be removed from the database using the DELETE endpoint. Users need to specify the entry's ID to delete a specific entry.
+## Check the Output:
+The script will create a CSV file named books_with_detailed_info.csv containing all the scraped data.
 
-
-## Development Environment
-
-The Fakad Infotech Application was developed using the following tools:
-
-- **Node.js:** A JavaScript runtime environment for building server-side applications.
-- **Express.js:** A web application framework for Node.js that provides a robust set of features for web and mobile applications.
-- **MongoDB:** A NoSQL database used to store and manage data.
-- **Swagger:** Used to generate API documentation for easy reference and testing.
-
-### Installation
-
-To install the necessary dependencies, run the following command:
-```bash
-npm install
-```
-
-## Local Testing
-
------------------------------------------------------------------
-For local testing, replace the base URL "https://fakad-student-application.onrender.com/application-form" with http://localhost:8080/application-form.
-
-For example, the endpoint "https://fakad-student-application.onrender.com/application-form" should be accessed as "http://localhost:8080/application-form" when testing locally. Everything else in the API request remains the same.
-
------------------------------------------------------------------
-
-## Useful Websites
-
-- [Node.js Documentation](https://nodejs.org/en/docs/)
-- [Express.js Documentation](https://expressjs.com/)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [Jest Documentation](https://jestjs.io/docs/en/getting-started)
-- [Rest Client - For manual testing and API development](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+## Script Workflow
+- Fetching Pages:
+The script fetches the HTML content from the website's pages.
+- Parsing Pages:
+It then parses the HTML using BeautifulSoup to find book details and their corresponding links.
+- Extracting Data:
+The script visits each book's page to extract detailed product information.
+- Storing Data:
+All the scraped data is stored in a CSV file for easy access and analysis.
 
 ## Future Work
 
-While the current version of the Fakad Infotech Application provides essential functionality, there are several areas for improvement and future enhancements:
+While the current version of the Book Scraper Script provides essential functionality, there are several areas for improvement and future enhancements:
 
-- * Implement authentication and authorization mechanisms to secure API endpoints.
-- * Enhance error handling to provide informative error messages for API consumers.
-- * Add pagination support for retrieving large collections of data.
-- Implement rate limiting and request throttling to prevent abuse of the API.
-- Integrate additional data validation checks to ensure data integrity.
-- Improve logging and monitoring capabilities to track API usage and performance.
-- Expand the API documentation to include detailed usage examples and code snippets.
-y
+- **Error Handling:** Implement more robust error handling to manage network issues or changes in website structure.
+- **Performance Optimization:** Improve the scraping speed by using asynchronous requests.
+- **Scrape Additional Data:** Expand the script to collect more detailed information, such as book descriptions, author details, and publication dates.
+- **Logging:** Add logging to monitor the scraping process and record any issues or errors encountered.
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+## Useful Websites
+
+- [BeautifulSoup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- [Requests Documentation](https://requests.readthedocs.io/en/latest/)
+- [Pandas Documentatio](https://pandas.pydata.org/docs/index.html)
 
 
 ### License
