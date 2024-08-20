@@ -6,7 +6,7 @@ The **Book Scraper Script** is a Python application designed to scrape book info
 
 This project is a web scraper built to extract comprehensive details about books listed on a website. It scrapes data from multiple pages of books and retrieves additional product information by visiting each book's individual page.
 
-[Software Demo Video](https://youtu.be/xGGPXlK9Lvs)
+#### to be updated [Software Demo Video](https://youtu./xGGPXlK9Lvs)
 
 ### Key Features:
 
