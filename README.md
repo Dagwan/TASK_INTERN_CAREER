@@ -59,4 +59,4 @@ To get started with the tasks:
 - **Virtual Environment:** Set up virtual environments using virtualenv or conda for project isolation.
 - **Documentation:** Use tools like Sphinx or MkDocs for creating documentation.
 
-For any questions or assistance, please refer to the documentation within each folder or reach out for support. Enjoy your Python development journey!
+For any questions or assistance, please refer to the documentation within each folder or reach out for support at dagwanpan@gmail.com  | dan21017@byui.edu. Enjoy your Python development journey!
