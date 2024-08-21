@@ -1,52 +1,50 @@
-# Book Scraper Script
+# Software Engineer Salaries Data Processing and Visualization
 
-The **Book Scraper Script** is a Python application designed to scrape book information from an online bookstore (e.g., "Books to Scrape"). This script collects detailed data about books, including their title, price, availability, rating, and additional product-specific information.
+The **Software Engineer Salaries Data Processing and Visualization** script is a Python application designed to process and visualize salary data for software engineers. This script reads raw data from a CSV file, cleans it, extracts relevant information, and generates various plots to analyze salary distribution, company ratings, and other key metrics.
 
 ## Overview
 
-This project is a web scraper built to extract comprehensive details about books listed on a website. It scrapes data from multiple pages of books and retrieves additional product information by visiting each book's individual page.
+This project is a data processing and visualization tool built to provide insights into software engineer salaries. It uses Python to handle data extraction, cleaning, processing, and visualization.
+
 
 #### to be updated [Software Demo Video](https://youtu./xGGPXlK9Lvs)
 
 ### Key Features:
 
-- **Scrape Multiple Pages:** Automatically navigate through multiple pages of books to collect data.
-- **Product Information Extraction:** Retrieve detailed product information, including UPC, Product Type, Price (excl. tax), Price (incl. tax), tax, availability, and the number of reviews.
-- **Data Storage:** Store the scraped data in a structured format (CSV) for easy access and analysis.
+- **Data Cleaning:** Handle missing values and clean raw data to prepare it for analysis.
+- **Salary Distribution Analysis:** Generate visualizations to show the distribution of software engineer salaries.
+- **Company Ratings Analysis:** Analyze and visualize company ratings and their correlation with salaries.
+- **Export Processed Data:** Save the cleaned and processed data to a new CSV file for further analysis or reporting.
 
-### Scraped Information:
+### Processed Information:
 
-- **Main Book Page:**
-  - **Title:** The title of the book.
-  - **Price:** The price of the book.
-  - **Availability:** Whether the book is in stock.
-  - **Rating:** The book's rating based on the website's star system.
-  - **Book URL:** The link to the book's detail page.
+- **Main Data:**
+  - **Salary:** The salary of the software engineer.
+  - **Company:** The company where the software engineer is employed.
+  - **Location:** The location of the job.
+  - **Company Rating:** The rating of the company based on employee reviews.
 
-- **Product Information Page:**
-  - **UPC:** Universal Product Code for the book.
-  - **Product Type:** The category/type of the book.
-  - **Price (excl. tax):** The price of the book excluding tax.
-  - **Price (incl. tax):** The price of the book including tax.
-  - **Tax:** The tax amount on the book.
-  - **Availability:** The stock status of the book.
-  - **Number of Reviews:** How many reviews the book has received.
+- **Visualizations:**
+  - **Salary Distribution:** A plot showing the distribution of salaries across different companies and locations.
+  - **Company Ratings vs. Salary:** A scatter plot to visualize the correlation between company ratings and salaries.
+  - **Location-based Salary Analysis:** A bar chart displaying salary averages by location.
 
 ## Development Environment
 
-The Book Scraper Script was developed using the following tools:
+The Software Engineer Salaries Data Processing and Visualization script was developed using the following tools:
 
-- **Python:** A powerful programming language for general-purpose programming.
-- **BeautifulSoup:** A library used to parse HTML and extract information from web pages.
-- **Requests:** A simple HTTP library for Python, used to send HTTP requests.
-- **Pandas:** A data manipulation and analysis library, used to organize and save the scraped data.
+- **Python:** A powerful programming language for data analysis and visualization.
+- **Pandas:** A data manipulation and analysis library, used to clean and process the data.
+- **Matplotlib & Seaborn:** Libraries used to create visualizations of the processed data.
+- **NumPy:** A fundamental package for scientific computing with Python, used for data manipulation.
 
 ## Installation
 
 To install the necessary dependencies, run the following command:
 
 ## bash
-pip install requests beautifulsoup4 pandas
+pip install pandas matplotlib seaborn numpy
+
 
 ## How to Run the Script
 ### Running the Script Locally
@@ -61,39 +59,41 @@ pip install -r requirements.txt
 
 ## Run the Script:
 Execute the scripts by running one by one:
-- python book_scraper.py
-- python process_books.py
+- data_processing.py
 
 ## Check the Output:
-The script will create a CSV file named books_with_detailed_info.csv containing all the scraped data. 
+The script will generate a CSV file named processed_salaries_data.csv containing all the cleaned and processed data. It will also create several visualizations saved as image files in the output directory. 
 
 ## Script Workflow
-- Fetching Pages:
-The script fetches the HTML content from the website's pages.
-- Parsing Pages:
-It then parses the HTML using BeautifulSoup to find book details and their corresponding links.
-- Extracting Data:
-The script visits each book's page to extract detailed product information.
-- Storing Data:
-All the scraped data is stored in a CSV file for easy access and analysis.
+- Data Cleaning:
+The script first reads the raw data and handles any missing or inconsistent entries to ensure the dataset is clean.
+
+- Data Processing:
+It then processes the data, extracting relevant information such as salary, company, and location details.
+
+- Visualization:
+Various plots are generated to help visualize the data, including salary distribution, company ratings, and location-based salary analysis.
+
+- Exporting Data:
+The cleaned and processed data is saved to a new CSV file for further analysis or reporting.
 
 ## Future Work
 
-While the current version of the Book Scraper Script provides essential functionality, there are several areas for improvement and future enhancements:
+While the current version of the Software Engineer Salaries Data Processing and Visualization script provides essential functionality, there are several areas for improvement and future enhancements:
 
-- **Error Handling:** Implement more robust error handling to manage network issues or changes in website structure.
-- **Performance Optimization:** Improve the scraping speed by using asynchronous requests.
-- **Scrape Additional Data:** Expand the script to collect more detailed information, such as book descriptions, author details, and publication dates.
-- **Logging:** Add logging to monitor the scraping process and record any issues or errors encountered.
+- Advanced Data Analysis: Implement more advanced data analysis techniques such as regression models or clustering.
+- Interactive Visualizations: Use libraries like Plotly or Bokeh to create interactive visualizations.
+- Real-time Data Processing: Adapt the script to handle real-time data streaming for more dynamic analysis.
+- Automated Reports: Generate automated reports in PDF or HTML format based on the processed data.
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
 ## Useful Websites
 
-- [BeautifulSoup Documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-- [Requests Documentation](https://requests.readthedocs.io/en/latest/)
-- [Pandas Documentatio](https://pandas.pydata.org/docs/index.html)
-
+- [Pandas Documentation](https://pandas.pydata.org/docs/)
+- [Matplotlib Documentation](https://matplotlib.org/stable/index.html)
+- [Seaborn Documentation](https://seaborn.pydata.org/)
+- [NumPy Documentation](https://numpy.org/doc/)
 
 ### License
 
