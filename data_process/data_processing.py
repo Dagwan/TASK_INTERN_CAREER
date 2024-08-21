@@ -27,25 +27,36 @@ def extract_salary(salary_str):
         tuple: A tuple containing the low, high, and average salary.
     """
     if not isinstance(salary_str, str):
-        return None, None, None  # Return None values if input is not a string
+        print(f"Invalid salary format (not a string): {salary_str}")
+        # Return None values if input is not a string
+        return None, None, None  
     
     # Remove any unwanted characters except for digits, 'K', and '-'
     clean_str = re.sub(r'[^\dK-]', '', salary_str)
     
+    # Debugging: Print the cleaned salary string
+    print(f"Processing salary: {clean_str}")
+    
     # Split the string into low and high salary parts
     salary_parts = clean_str.split('-')
     
-    if len(salary_parts) == 2:
-        # Convert to numeric, handling the 'K' multiplier
-        salary_low = float(salary_parts[0].replace('K', '')) * 1000
-        salary_high = float(salary_parts[1].replace('K', '')) * 1000
-        average_salary = (salary_low + salary_high) / 2
-        return salary_low, salary_high, average_salary
-    elif len(salary_parts) == 1:
-        salary = float(salary_parts[0].replace('K', '')) * 1000
-        return salary, salary, salary
-    else:
+    try:
+        if len(salary_parts) == 2:
+            # Convert to numeric, handling the 'K' multiplier
+            salary_low = float(salary_parts[0].replace('K', '')) * 1000
+            salary_high = float(salary_parts[1].replace('K', '')) * 1000
+            average_salary = (salary_low + salary_high) / 2
+            return salary_low, salary_high, average_salary
+        elif len(salary_parts) == 1:
+            salary = float(salary_parts[0].replace('K', '')) * 1000
+            return salary, salary, salary
+        else:
+            print(f"Unexpected salary format: {salary_str}")
+            return None, None, None
+    except ValueError as e:
+        # print(f"Error processing salary: {salary_str}, Error: {e}")
         return None, None, None
+
 
 def clean_data(df):
     """
@@ -53,10 +64,10 @@ def clean_data(df):
     column, handling missing values, and converting data types.
     
     Args:
-    df (pd.DataFrame): The raw data.
+        df (pd.DataFrame): The raw data.
 
     Returns:
-    pd.DataFrame: The cleaned data.
+        pd.DataFrame: The cleaned data.
     """
     # Ensure the 'Salary' column is a string
     df['Salary'] = df['Salary'].astype(str)
