@@ -7,7 +7,7 @@ Welcome to the **Task Intern Career** repository! This folder contains the tasks
 This repository is organized into two main tasks:
 
 - **Task 1: Web Scraping and Automation**
-- **Task 2: Data Processing**
+- **Task 2: Data Processing Automation**
 
 Each task has its own dedicated folder containing the relevant scripts, documentation, and any associated files.
 
