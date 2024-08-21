@@ -1,6 +1,6 @@
 # Task Intern Career
 
-Welcome to the **Task Intern Career** repository! This folder contains the tasks assigned during the internship program to enhance your Python development skills. Below is a description of the two main tasks and their corresponding folders.
+Welcome to the **Task Intern Career** repository! This folder contains the tasks assigned to me during the internship program to enhance my Python development skills. Below is a description of the two main tasks and their corresponding folders.
 
 ## Overview
 
@@ -60,4 +60,3 @@ To get started with the tasks:
 - **Documentation:** Use tools like Sphinx or MkDocs for creating documentation.
 
 For any questions or assistance, please refer to the documentation within each folder or reach out for support. Enjoy your Python development journey!
-
