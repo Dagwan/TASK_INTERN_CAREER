@@ -222,9 +222,20 @@ def save_processed_data(df, file_path):
     Returns:
         None
     """
-    df.to_csv(file_path, index=False)
-    print(f"Processed data saved to {file_path}")
-
+    try:
+        # Attempt to save the DataFrame to a CSV file
+        df.to_csv(file_path, index=False)
+        print(f"Processed data successfully saved to {file_path}")
+    except PermissionError:
+        # Handle the case where the file is open or permissions are denied
+        print(f"Error: The file '{file_path}' is currently open in another program. Please close the file and try again.")
+    except FileNotFoundError:
+        # Handle the case where the directory or file path is incorrect
+        print(f"Error: The directory or file path '{file_path}' was not found. Please check the path and try again.")
+    except Exception as e:
+        # Handle any other exceptions
+        print(f"An unexpected error occurred: {e}")
+        
 # Main function to execute the script
 def main():
     # File paths

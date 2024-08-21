@@ -91,8 +91,15 @@ def save_cleaned_data(df, output_file_path):
     df (pd.DataFrame): The cleaned DataFrame.
     output_file_path (str): The path where the cleaned CSV file will be saved.
     """
-    df.to_csv(output_file_path, index=False)
-    print("\nCleaned data saved to", output_file_path)
+    try:
+        df.to_csv(output_file_path, index=False)
+        print(f"\nCleaned data successfully saved to {output_file_path}")
+    except PermissionError:
+        print(f"Error: The file '{output_file_path}' is currently open in another program. Please close the file and try again.")
+    except FileNotFoundError:
+        print(f"Error: The directory or file path '{output_file_path}' was not found. Please check the path and try again.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
 
 # Main workflow
 def main():
