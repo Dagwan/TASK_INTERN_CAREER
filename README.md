@@ -1,4 +1,4 @@
-# Task Intern Career
+# Task Intern at Career
 
 Welcome to the **Task Intern Career** repository! This folder contains the tasks assigned to me during the internship program to enhance my Python development skills. Below is a description of the two main tasks and their corresponding folders.
 
