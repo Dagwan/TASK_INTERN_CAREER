@@ -116,7 +116,8 @@ def scrape_books(base_url, pages):
                     'Rating': rating,
                     'Book URL': book_url
                 }
-                book_data.update(product_info)  # Add detailed info to the book data
+                # Add detailed info to the book data
+                book_data.update(product_info)  
                 all_books.append(book_data)
         else:
             print(f"Failed to retrieve page {page}. Status code: {response.status_code}")
