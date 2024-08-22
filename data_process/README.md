@@ -1,13 +1,20 @@
 # Software Engineer Salaries Data Processing and Visualization
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 The **Software Engineer Salaries Data Processing and Visualization** script is a Python application designed to process and visualize salary data for software engineers. This script reads raw data from a CSV file, cleans it, extracts relevant information, and generates various plots to analyze salary distribution, company ratings, and other key metrics.
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Overview
 
 This project is a data processing and visualization tool built to provide insights into software engineer salaries. It uses Python to handle data extraction, cleaning, processing, and visualization.
 
+---------------------------------------------------------------------------------------------------------------------------------
 
 #### to be updated [Software Demo Video](https://youtu./xGGPXlK9Lvs)
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ### Key Features:
 
@@ -15,6 +22,8 @@ This project is a data processing and visualization tool built to provide insigh
 - **Salary Distribution Analysis:** Generate visualizations to show the distribution of software engineer salaries.
 - **Company Ratings Analysis:** Analyze and visualize company ratings and their correlation with salaries.
 - **Export Processed Data:** Save the cleaned and processed data to a new CSV file for further analysis or reporting.
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ### Processed Information:
 
@@ -29,6 +38,8 @@ This project is a data processing and visualization tool built to provide insigh
   - **Company Ratings vs. Salary:** A scatter plot to visualize the correlation between company ratings and salaries.
   - **Location-based Salary Analysis:** A bar chart displaying salary averages by location.
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Development Environment
 
 The Software Engineer Salaries Data Processing and Visualization script was developed using the following tools:
@@ -38,13 +49,18 @@ The Software Engineer Salaries Data Processing and Visualization script was deve
 - **Matplotlib & Seaborn:** Libraries used to create visualizations of the processed data.
 - **NumPy:** A fundamental package for scientific computing with Python, used for data manipulation.
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Installation
 
 To install the necessary dependencies, run the following command:
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## bash
 `pip install pandas matplotlib seaborn numpy`
 
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## How to Run the Script
 ### Running the Script Locally
@@ -53,16 +69,24 @@ To install the necessary dependencies, run the following command:
 `git clone "repository-url"`
 `cd "repository-directory"`
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Install Dependencies:
 Ensure all required libraries are installed using the command:
 `pip install -r requirements.txt`
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Run the Script:
 Execute the scripts by running one by one:
 `data_processing.py`
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Check the Output:
 The script will generate a CSV file named processed_salaries_data.csv containing all the cleaned and processed data. It will also create several visualizations saved as image files in the output directory. 
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Script Workflow
 - Data Cleaning:
@@ -77,6 +101,8 @@ Various plots are generated to help visualize the data, including salary distrib
 - Exporting Data:
 The cleaned and processed data is saved to a new CSV file for further analysis or reporting.
 
+---------------------------------------------------------------------------------------------------------------------------------
+
 ## Unit Testing
 To ensure the reliability of the data processing functions, unit tests have been implemented using the unittest framework. These tests cover:
 
@@ -85,10 +111,14 @@ To ensure the reliability of the data processing functions, unit tests have been
 - Visualization functions to confirm that plots are generated as expected.
 - Data export functionality to verify that processed data is saved correctly.
 
-To run the tests, execute:
+---------------------------------------------------------------------------------------------------------------------------------
+
+## Running the Tests
+To run all the tests, execute the following command:
 `python -m unittest discover` or 
 `test_data_processing.py`
 
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Future Work
 
@@ -107,6 +137,8 @@ While the current version of the Software Engineer Salaries Data Processing and 
 - [Matplotlib Documentation](https://matplotlib.org/stable/index.html)
 - [Seaborn Documentation](https://seaborn.pydata.org/)
 - [NumPy Documentation](https://numpy.org/doc/)
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ### License
 
