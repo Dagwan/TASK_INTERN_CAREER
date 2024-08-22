@@ -85,7 +85,6 @@ class TestProcessBooks(unittest.TestCase):
         self.assertTrue(df['Price'].dtype == float, "The 'Price' column should be of type float.")
         # Check that there are no missing values in the 'Price' column after cleaning
         self.assertEqual(df['Price'].isnull().sum(), 0, "There should be no missing values in the 'Price' column after cleaning.")
-
     
     def test_analyze_data(self):
         """
@@ -113,7 +112,30 @@ class TestProcessBooks(unittest.TestCase):
         save_cleaned_data(cleaned_df, self.cleaned_file_path)
         # Check if the cleaned data file was created
         self.assertTrue(os.path.isfile(self.cleaned_file_path), "The cleaned data file should be created.")
-
+    
+    def test_display_basic_info(self):
+        """
+        Test the display_basic_info function to ensure it prints the correct basic information about the DataFrame.
+        
+        The test captures the output of print statements and verifies that they contain expected content.
+        """
+        # Redirect standard output to capture print statements
+        output = StringIO()
+        import sys
+        sys.stdout = output
+        
+        # Call the display_basic_info function
+        display_basic_info(self.df)
+        
+        # Restore standard output to its original state
+        sys.stdout = sys.__stdout__
+        
+        # Check if the output contains expected information
+        output_value = output.getvalue()
+        self.assertIn("Data Overview:", output_value, "The output should contain 'Data Overview:'")
+        self.assertIn("First few rows of the data:", output_value, "The output should contain 'First few rows of the data:'")
+        self.assertIn("Title", output_value, "The output should include column headers, like 'Title'")
+    
     def test_main_workflow(self):
         """
         Test the entire main workflow to ensure it executes correctly.
