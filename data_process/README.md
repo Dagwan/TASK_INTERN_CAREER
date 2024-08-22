@@ -43,23 +43,23 @@ The Software Engineer Salaries Data Processing and Visualization script was deve
 To install the necessary dependencies, run the following command:
 
 ## bash
-pip install pandas matplotlib seaborn numpy
+`pip install pandas matplotlib seaborn numpy`
 
 
 ## How to Run the Script
 ### Running the Script Locally
 - Clone the project repository from GitHub to your local machine.
 
-* git clone "repository-url"
-* cd "repository-directory"
+`git clone "repository-url"`
+`cd "repository-directory"`
 
 ## Install Dependencies:
 Ensure all required libraries are installed using the command:
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 ## Run the Script:
 Execute the scripts by running one by one:
-- data_processing.py
+`data_processing.py`
 
 ## Check the Output:
 The script will generate a CSV file named processed_salaries_data.csv containing all the cleaned and processed data. It will also create several visualizations saved as image files in the output directory. 
@@ -76,6 +76,19 @@ Various plots are generated to help visualize the data, including salary distrib
 
 - Exporting Data:
 The cleaned and processed data is saved to a new CSV file for further analysis or reporting.
+
+## Unit Testing
+To ensure the reliability of the data processing functions, unit tests have been implemented using the unittest framework. These tests cover:
+
+- Data reading and cleaning functions to validate correctness and data integrity.
+- Salary extraction and processing to ensure accurate conversion and calculation.
+- Visualization functions to confirm that plots are generated as expected.
+- Data export functionality to verify that processed data is saved correctly.
+
+To run the tests, execute:
+`python -m unittest discover` or 
+`test_data_processing.py`
+
 
 ## Future Work
 
