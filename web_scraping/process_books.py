@@ -1,6 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 def load_data(file_path):
     """
@@ -12,8 +13,18 @@ def load_data(file_path):
     Returns:
     pd.DataFrame: The loaded DataFrame.
     """
-    df = pd.read_csv(file_path)
-    return df
+    if not os.path.isfile(file_path):
+        raise FileNotFoundError(f"Error: The file '{file_path}' does not exist. Please check the path and try again.")
+    
+    try:
+        df = pd.read_csv(file_path)
+        return df
+    except pd.errors.EmptyDataError:
+        raise ValueError(f"Error: The file '{file_path}' is empty.")
+    except pd.errors.ParserError:
+        raise ValueError(f"Error: There was an issue parsing the file '{file_path}'.")
+    except Exception as e:
+        raise RuntimeError(f"An unexpected error occurred while loading the file: {e}")
 
 def display_basic_info(df):
     """
@@ -48,7 +59,6 @@ def clean_data(df):
     # df.dropna(inplace=True)
     
     # Clean the 'Price' column
-    # Remove currency symbols and convert to float
     df['Price'] = df['Price'].replace('[£]', '', regex=True).replace('[\u20ac,]', '', regex=True)
     df['Price'] = df['Price'].astype(float)
     
@@ -107,20 +117,30 @@ def main():
     input_file_path = 'books_with_detailed_info.csv'
     output_file_path = 'cleaned_books_data.csv'
     
-    # Load the data
-    df = load_data(input_file_path)
+    try:
+        # Load the data
+        df = load_data(input_file_path)
+        
+        # Display basic information
+        display_basic_info(df)
+        
+        # Clean the data
+        df = clean_data(df)
+        
+        # Analyze the data
+        analyze_data(df)
+        
+        # Save the cleaned data
+        save_cleaned_data(df, output_file_path)
     
-    # Display basic information
-    display_basic_info(df)
-    
-    # Clean the data
-    df = clean_data(df)
-    
-    # Analyze the data
-    analyze_data(df)
-    
-    # Save the cleaned data
-    save_cleaned_data(df, output_file_path)
+    except FileNotFoundError as e:
+        print(e)
+    except ValueError as e:
+        print(e)
+    except RuntimeError as e:
+        print(e)
+    except Exception as e:
+        print(f"An unexpected error occurred in the main workflow: {e}")
 
 # Run the main workflow
 if __name__ == "__main__":
