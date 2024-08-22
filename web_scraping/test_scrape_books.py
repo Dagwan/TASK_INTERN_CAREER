@@ -22,15 +22,24 @@ class TestScrapeBooks(unittest.TestCase):
         3. Check if the `requests.get` method was called once with the correct URL.
         4. Verify that the returned response has a status code of 200, indicating success.
         """
-        mock_response = Mock()  # Create a mock response object
-        mock_response.status_code = 200  # Set the status code to 200 (OK)
-        mock_get.return_value = mock_response  # Make the mock `requests.get` return the mock response
+        
+        # Create a mock response object
+        mock_response = Mock() 
+        
+        # Set the status code to 200 (OK)
+        mock_response.status_code = 200  
+        
+        # Make the mock `requests.get` return the mock response
+        mock_get.return_value = mock_response  
         
         url = 'http://example.com'
         response = fetch_page(url)
         
-        mock_get.assert_called_once_with(url)  # Check if `requests.get` was called with the URL
-        self.assertEqual(response.status_code, 200)  # Ensure the response status code is 200
+        # Check if `requests.get` was called with the URL
+        mock_get.assert_called_once_with(url)  
+        
+        # Ensure the response status code is 200
+        self.assertEqual(response.status_code, 200)  
 
     def test_parse_page(self):
         """
@@ -44,13 +53,20 @@ class TestScrapeBooks(unittest.TestCase):
         5. Verify that the parsed HTML content is correctly structured.
         """
         html_content = '<html><body><h1>Test</h1></body></html>'
-        response = Mock()  # Mock a response object
-        response.content = html_content  # Set the content of the response to our HTML
+        
+        # Mock a response object
+        response = Mock()  
+        
+        # Set the content of the response to our HTML
+        response.content = html_content  
         
         soup = parse_page(response)
         
-        self.assertIsInstance(soup, BeautifulSoup)  # Check if the return type is BeautifulSoup
-        self.assertEqual(soup.h1.text, 'Test')  # Verify that the content is correctly parsed
+        # Check if the return type is BeautifulSoup
+        self.assertIsInstance(soup, BeautifulSoup)  
+        
+        # Verify that the content is correctly parsed
+        self.assertEqual(soup.h1.text, 'Test')  
 
     def test_extract_books(self):
         """
@@ -74,10 +90,15 @@ class TestScrapeBooks(unittest.TestCase):
         </body>
         </html>
         '''
-        soup = BeautifulSoup(html_content, 'html.parser')  # Parse the HTML
-        books = extract_books(soup)  # Extract book details
         
-        self.assertEqual(len(books), 1)  # Ensure one book was found
+        # Parse the HTML
+        soup = BeautifulSoup(html_content, 'html.parser')  
+        
+        # Extract book details
+        books = extract_books(soup)  
+        
+        # Ensure one book was found
+        self.assertEqual(len(books), 1)  
         self.assertEqual(books[0], ['Book Title 1', '£10.00', 'In stock', 'Three', 'http://books.toscrape.com/catalogue/book1.html'])
 
     @patch('scrape_books.fetch_page')
@@ -102,15 +123,21 @@ class TestScrapeBooks(unittest.TestCase):
         </body>
         </html>
         '''
-        response = Mock()  # Mock a response object
-        response.content = html_content  # Set the content of the response to our HTML
-        mock_fetch_page.return_value = response  # Mock the `fetch_page` function to return this response
+        # Mock a response object
+        response = Mock()  
+        
+        # Set the content of the response to our HTML
+        response.content = html_content  
+        
+        # Mock the `fetch_page` function to return this response
+        mock_fetch_page.return_value = response 
         
         book_url = 'http://books.toscrape.com/catalogue/book1.html'
         product_info = extract_product_info(book_url)
         
-        mock_fetch_page.assert_called_once_with(book_url)  # Ensure `fetch_page` was called with the book URL
-        self.assertEqual(product_info, {'UPC': '123456789', 'Product Type': 'Book'})  # Verify the extracted product info
+        # Ensure `fetch_page` was called with the book URL
+        mock_fetch_page.assert_called_once_with(book_url)  
+        self.assertEqual(product_info, {'UPC': '123456789', 'Product Type': 'Book'})  
 
     @patch('scrape_books.fetch_page')
     @patch('scrape_books.extract_product_info')
@@ -126,8 +153,13 @@ class TestScrapeBooks(unittest.TestCase):
         5. Call the `scrape_books` function with a base URL and number of pages to scrape.
         6. Verify that the function correctly combines book details with product info and returns a DataFrame.
         """
-        mock_response = Mock()  # Mock a response object
-        mock_response.status_code = 200  # Set status code to 200
+        # Mock a response object
+        mock_response = Mock() 
+        
+        # Set status code to 200 
+        mock_response.status_code = 200  
+        
+        # Define a simple HTML for a book listing
         mock_response.content = '''
         <html>
         <body>
@@ -139,19 +171,24 @@ class TestScrapeBooks(unittest.TestCase):
             </article>
         </body>
         </html>
-        '''  # Define a simple HTML for a book listing
-        mock_fetch_page.return_value = mock_response  # Mock `fetch_page` to return the book list HTML
-        mock_extract_product_info.return_value = {'UPC': '123456789', 'Product Type': 'Book'}  # Mock product info extraction
+        '''  
+        # Mock `fetch_page` to return the book list HTML
+        mock_fetch_page.return_value = mock_response  
+        
+        # Mock product info extraction
+        mock_extract_product_info.return_value = {'UPC': '123456789', 'Product Type': 'Book'}  
         
         base_url = "http://books.toscrape.com/catalogue/page-{}.html"
-        df = scrape_books(base_url, 1)  # Scrape one page of books
         
-        self.assertEqual(len(df), 1)  # Ensure one book was found
-        self.assertEqual(df.iloc[0]['Book Title'], 'Book Title 1')  # Verify the book title
-        self.assertEqual(df.iloc[0]['Price'], '£10.00')  # Verify the price
-        self.assertEqual(df.iloc[0]['Availability'], 'In stock')  # Verify the availability
-        self.assertEqual(df.iloc[0]['Rating'], 'Three')  # Verify the rating
-        self.assertEqual(df.iloc[0]['UPC'], '123456789')  # Verify the product info
+        # Scrape one page of books
+        df = scrape_books(base_url, 1)  
+        
+        self.assertEqual(len(df), 1)  
+        self.assertEqual(df.iloc[0]['Book Title'], 'Book Title 1')  
+        self.assertEqual(df.iloc[0]['Price'], '£10.00')  
+        self.assertEqual(df.iloc[0]['Availability'], 'In stock')  
+        self.assertEqual(df.iloc[0]['Rating'], 'Three')  
+        self.assertEqual(df.iloc[0]['UPC'], '123456789')  
 
     @patch('scrape_books.pd.DataFrame.to_csv')
     def test_save_data(self, mock_to_csv):
@@ -164,12 +201,14 @@ class TestScrapeBooks(unittest.TestCase):
         3. Call the `save_data` function with the DataFrame and file path.
         4. Verify that the `to_csv` method was called once with the correct file path and parameters.
         """
-        df = pd.DataFrame({'Book Title': ['Book Title 1'], 'Price': ['£10.00']})  # Create a simple DataFrame
+        # Create a simple DataFrame
+        df = pd.DataFrame({'Book Title': ['Book Title 1'], 'Price': ['£10.00']})  
         file_path = 'test_books_with_detailed_info.csv'
         
         save_data(df, file_path)
         
-        mock_to_csv.assert_called_once_with(file_path, index=False)  # Check if `to_csv` was called with the correct path
+        # Check if `to_csv` was called with the correct path        
+        mock_to_csv.assert_called_once_with(file_path, index=False)  
 
 if __name__ == '__main__':
     unittest.main()
