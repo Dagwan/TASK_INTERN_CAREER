@@ -58,6 +58,9 @@ def clean_data(df):
     # Example: Drop rows with any missing values
     # df.dropna(inplace=True)
     
+    # Drop rows with missing values in 'Price'
+    df.dropna(subset=['Price'], inplace=True)
+    
     # Clean the 'Price' column
     df['Price'] = df['Price'].replace('[£]', '', regex=True).replace('[\u20ac,]', '', regex=True)
     df['Price'] = df['Price'].astype(float)
