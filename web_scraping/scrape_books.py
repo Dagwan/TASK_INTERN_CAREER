@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import time
 
 def fetch_page(url):
     """
@@ -135,15 +136,30 @@ def save_data(df, file_path):
     df (pd.DataFrame): The DataFrame to save.
     file_path (str): The path to save the CSV file.
     """
-    df.to_csv(file_path, index=False)
-    print(f"Data saved to {file_path}")
+    try:
+        df.to_csv(file_path, index=False)
+        print(f"Data saved to {file_path}")
+    except PermissionError:
+        print(f"PermissionError: Could not write to {file_path}. Retrying in 2 seconds...")
+        time.sleep(2)  # This will pause the script for 2 seconds
+        save_data(df, file_path)  # Retry saving the file
+# def save_data(df, file_path):
+#     """
+#     Save the DataFrame to a CSV file.
+    
+#     Parameters:
+#     df (pd.DataFrame): The DataFrame to save.
+#     file_path (str): The path to save the CSV file.
+#     """
+#     df.to_csv(file_path, index=False)
+#     print(f"Data saved to {file_path}")
 
 # Main workflow
 def main():
     # Define the base URL and number of pages to scrape
     base_url = "http://books.toscrape.com/catalogue/page-{}.html"
     num_pages = 5
-    output_file_path = 'books_with_detailed_info.csv'
+    output_file_path = 'books_with_scraped_info.csv'
     
     # Scrape the books and get the DataFrame
     df = scrape_books(base_url, num_pages)
