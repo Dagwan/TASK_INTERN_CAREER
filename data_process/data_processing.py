@@ -205,7 +205,14 @@ def plot_heatmap_correlation(df):
     Returns:
         None
     """
-    correlation_matrix = df.corr()
+    # Select only numeric columns for correlation
+    numeric_df = df.select_dtypes(include=[np.number])
+    
+    # Debugging: Check which columns are being included in the correlation matrix
+    print(f"Numeric columns for corelation: {numeric_df.columns.tolist()}")
+    
+    correlation_matrix = numeric_df.corr()
+    
     plt.figure(figsize=(10, 8))
     sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f')
     plt.title('Correlation Heatmap')

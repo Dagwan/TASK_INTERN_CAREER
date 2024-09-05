@@ -22,7 +22,7 @@ class TestScrapeBooks(unittest.TestCase):
         3. Check if the `requests.get` method was called once with the correct URL.
         4. Verify that the returned response has a status code of 200, indicating success.
         """
-        
+
         # Create a mock response object
         mock_response = Mock() 
         
